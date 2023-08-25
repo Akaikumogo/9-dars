@@ -2,16 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function SignUp() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const addUser = () => {
-    const user = { username, password }; // Yangi foydalanuvchi obyekti
-    const users = JSON.parse(localStorage.getItem("users")) || []; // Foydalanuvchilar massivini localStorage dan olish
-    users.push(user); // Yangi foydalanuvchini massivga qo'shish
-    localStorage.setItem("users", JSON.stringify(users)); // Foydalanuvchilar massivini localStorage ga saqlash
-  };
-
+  const [userName, setUsername] = useState("");
+  const addUser = () => {};
   return (
     <div>
       <div className="navbar">
@@ -26,8 +18,6 @@ export default function SignUp() {
               type="text"
               minLength={"3"}
               required
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
             />
             <input
               className="input"
@@ -35,11 +25,9 @@ export default function SignUp() {
               type="password"
               minLength={"6"}
               required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
             />
             <Link to="/login">
-              <button className="btn" type="submit" onClick={addUser}>
+              <button className="btn" type="submit">
                 Sign-Up
               </button>
             </Link>
