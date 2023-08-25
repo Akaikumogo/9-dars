@@ -1,6 +1,30 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Login() {
+  const [loginedUserName, setLoginedUserName] = useState("");
+  const [loginedPassword, setLoginedPassword] = useState("");
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    checkUser();
+  };
+
+  const checkUser = () => {
+    const users = JSON.parse(localStorage.getItem("users"));
+    for (const item of users) {
+      if (
+        item.userName === loginedUserName &&
+        item.password === loginedPassword
+      ) {
+        item.status = true; // Foydalanuvchining statusini true ga o'zgartirish
+        localStorage.setItem("users", JSON.stringify(users));
+        return;
+      }
+    }
+    console.log("404");
+  };
+
   return (
     <div>
       <div className="navbar">
@@ -8,23 +32,27 @@ export default function Login() {
       </div>
       <div className="Home_page">
         <div>
-          <form>
+          <form onSubmit={handleSignUp}>
             <input
               className="input"
-              placeholder="User name"
+              placeholder="Username"
               type="text"
-              minLength={"3"}
+              minLength={3}
               required
+              value={loginedUserName}
+              onChange={(e) => setLoginedUserName(e.target.value)}
             />
             <input
               className="input"
-              placeholder="password"
+              placeholder="Password"
               type="password"
-              minLength={"6"}
+              minLength={6}
               required
+              value={loginedPassword}
+              onChange={(e) => setLoginedPassword(e.target.value)}
             />
             <Link to="/account">
-              <button className="btn" type="submit">
+              <button onClick={checkUser} className="btn" type="submit">
                 Login
               </button>
             </Link>
