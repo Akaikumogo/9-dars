@@ -1,21 +1,24 @@
-import Navbar from "./components/Navbar";
-import Name from "./Name.css?inline";
-import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Registration from "./components/Registration";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Account from "./components/Account";
+import Home from "./components/Home";
+import SignUp from "./components/SignUp";
+import Login from "./components/Login";
 export default function App() {
-  const [signUp, setSignUp] = useState(false);
   return (
-    <>
-      <Navbar signUp={signUp} setSignUp={setSignUp} />;
-      <Router basename="/">
-        <Routes>
-          <Route
-            path="/sign-up"
-            element={signUp ? <Registration /> : "GO reg"}
-          />
-        </Routes>
-      </Router>
-    </>
+    <div className="page">
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Routes>
+        <Route path="/account" element={<Account />} />
+      </Routes>
+      <Routes>
+        <Route path="/sign-up" element={<SignUp />} />
+      </Routes>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </div>
   );
 }
