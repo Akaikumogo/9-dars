@@ -1,0 +1,34 @@
+.navbar {
+  width: 800px;
+  height: 50px;
+  border: 1px solid;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list {
+  width: 40%;
+  height: auto;
+  display: flex;
+  border: 1px solid;
+}
+.nav-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  list-style: none;
+}
+
+.logo {
+  width: 10%;
+  height: auto;
+  border: 1px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
