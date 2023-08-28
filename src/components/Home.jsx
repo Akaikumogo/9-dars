@@ -11,6 +11,9 @@ export default function Home() {
             <Link to="/sign-up">
               <button className="btn">SignUp</button>
             </Link>
+            <Link to="/login">
+              <button className="btn">Sign-In</button>
+            </Link>
           </ul>
         </div>
       </div>

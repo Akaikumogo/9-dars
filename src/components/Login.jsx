@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export default function Login() {
+  const link = "/account";
   const [loginedUserName, setLoginedUserName] = useState("");
   const [loginedPassword, setLoginedPassword] = useState("");
 
@@ -17,9 +18,10 @@ export default function Login() {
         item.userName === loginedUserName &&
         item.password === loginedPassword
       ) {
-        item.status = true; // Foydalanuvchining statusini true ga o'zgartirish
+        item.status = true;
         localStorage.setItem("users", JSON.stringify(users));
-        return;
+      } else {
+        const link = "/login";
       }
     }
     console.log("404");
